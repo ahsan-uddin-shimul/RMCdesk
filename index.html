@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+
+    <link rel="icon" href="logo_fetch.png" sizes="16x16" type="image/png">
+    
+    <title>RMCdesk</title>
+</head>
+<body onload="onLoadFunc()">
+
+
+<!---------------- TOP - START ------------------->
+<img id="banner" src="banner.jpg">
+<table id="table-main">
+<tr>    
+<td id="table-border">
+    <div id="container-top-left">
+
+        <h3 class="header">S U M M E R Y</h3>
+
+        <div class="aside">
+        <label id="label-top" name="cft-opt-top">Concrete in CFT (x100k)</label>
+        <input id="top-con-cft" type="text" placeholder="---Insert---" name="cft-opt-top" oninput="functionExecuteM3()" onclick="clickPass_top()"/>
+      
+
+            <input id="qty-in-det-top" readonly></input>
+
+            <!--------------STRENGTH DETERMINES START---------------->
+
+           
+                <label id="label-strength" for="name-strength">Strength in PSI</label>
+                <select id="strength-in" oninput="strengthFeed()" onchange="onCallChange()">
+                    <option value="1450">1,450</option>
+                    <option value="2000">2,000</option>
+                    <option value="2175">2,175</option>
+                    <option value="2500">2,500</option>
+                    <option value="2900">2,900</option>
+                    <option value="3000">3,000</option>
+                    <option value="3200">3,200</option>
+                    <option value="3500">3,500</option>
+                    <option value="3625">3,625</option>
+                    <option value="3800">3,800</option>
+                    <option value="4000" selected>4,000</option>
+                    <option value="4200">4,200</option>
+                    <option value="4350">4,350</option>
+                    <option value="4500">4,500</option>
+                    <option value="4640">4,640</option>
+                    <option value="4800">4,800</option>
+                    <option value="5000">5,000</option>
+                    <option value="5075">5,075</option>
+                    <option value="5300">5,300</option>
+                    <option value="5500">5,500</option>
+                    <option value="5800">5,800</option>
+                    <option value="6000">6,000</option>
+                    <option value="6300">6,300</option>
+                    <option value="6500">6,500</option>  
+                </select> 
+
+                <input id="psi-mpa" value="= 28 MPA" readonly>
+
+
+
+
+
+            <!--------------STRENGTH DETERMINES END---------------->
+
+            <br>
+
+            <label id="label-top" for="top-cft">Concrete in M3 (actual)</label>
+            <input id="top-con-m3" class="" name="top-m3" readonly></input>
+
+            <!---------------CEMENT TYPE START ----------------------->
+
+            <input type="radio" id="rad-cem-pcc" name="rad-cem" value="pcc" onclick="switchPcc()">
+            <label id="lab-pcc">PCC</label>
+
+            <input type="radio" id="rad-cem-opc" name="rad-cem" value="opc" onclick="switchOpc()">
+            <label id="lab-pcc">OPC</label>
+
+            <button id="button-default-top" onclick="defaultStrength()">Default</button>
+
+
+
+            <!---------------CEMENT TYPE END ----------------------->
+
+            
+            
+        <br>
+        <br>
+        <label id="typ-ratio" for="opt-34">Stone type ratio % (3/4 by 1/2)</label>
+        <select id="opt-34" name="opt-34" onchange="onChange34Col()">
+            <option>0</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option>
+            <option>60</option><option>70</option><option selected>80</option><option>90</option><option>100</option>  
+        </select>
+
+        <select id="opt-12" name="opt-12" onchange="onChange12Col()">
+            <option>0</option><option>10</option><option selected>20</option><option>30</option><option>40</option><option>50</option>
+            <option>60</option><option>70</option><option>80</option><option>90</option><option>100</option>
+        </select>
+
+        <button id="button-default-top" onclick="onFeedTop()">Set Default</button>
+        
+        <input id="error-inp" readonly></input>
+
+        <!--<button id="button-re-cal-top" onclick="functionOnTop()">Re-calculate</button>-->
+
+        <br>
+        <br>
+        <br>
+
+        <table id="top-result">
+            <tr>
+                <th class="table-fat">Stone (MT)</th>
+                <th class="table-fat">Sand (CFT)</th>
+                <th class="table-fat">Cement (MT)</th>
+                <th class="table-fat">Admix (MT)</th>
+                <th class="table-fat">Water (MT)</th>
+            </tr>
+            
+            <tr>
+                <td><input id="top-st-req-tot" class="common-ontop set1  new-h" readonly></input></td>
+                <td rowspan="4"><input id="top-sand-cft" class="common-ontop set2" readonly></input>
+                    <br>
+                    
+                
+                </td>
+                <td rowspan="4"><input id="top-cem-mt" class="common-ontop set2" readonly></input></td>
+                <td rowspan="4"><input id="top-adm-mt" class="common-ontop set2 new-up" readonly></input>
+                    <input id="top-adm-ibc" class="common-ontop set3 new-adm-1" readonly></input>
+                    <input id="top-adm-200d" class="common-ontop set3 new-adm-2" readonly></input>
+                
+                </td>
+                <td rowspan="4"><input id="top-wat-mt" class="common-ontop set2" readonly></input></td>
+            </tr>
+
+            <tr>
+                <td><input id="top-st-req-34" class="common-ontop set1 new-h" readonly></input></td>
+                                
+            </tr>
+            <tr>
+                <td><input id="top-st-req-12" class="common-ontop set1 new-h" readonly></input></td>
+                
+            </tr>
+            
+            </table>
+
+        <br>
+
+
+        <!-- <button id="button-top" class="button" onclick="functionOnTop()">Calculate</button> -->
+        <button id="button-reset-top" class="button" onclick="myReset()">Reset</button>
+    </div>
+</div>
+
+</td>
+<td>
+    <div id="container-top-right">
+
+        <h3 class="header">B A S I C S</h3>
+
+        <div class="aside top-marg">
+
+        <label id="label-right" for="top-1"><b>Stone:</b> 1 M3 stone Volume (CFT)</label>
+        <input id = "top-st-vol-23" class="right-info" name="top-1" value="23" oninput="functionChange23()"></input>
+        <br>
+        <label id="label-right" for="top-2"><b>Stone:</b> 1 CFT stone weight (KG)</label>
+        <input id = "top-cft-wt-44" class="right-info" name="top-2" value="44" oninput="functionChange44()"></input>
+        <br>
+
+        <label id="label-right" for="top-4"><b>Stone:</b> Stone req. for 1 M3 concrete (KG)</label>
+        <input id = "top-st-req-1050" class="right-info" name="top-4" value="1055" oninput="functionChange1050()"></input>
+        <br>
+
+        <label id="label-right" for="top-3"><b>Sand:</b> 1 CFT sand weight (KG)</label>
+        <input id = "top-cft-wt-38" class="right-info" name="top-3" value="38" oninput="functionChange38()"></input>
+        <br>
+        
+        <label id="label-right" for="top-5"><b>Sand:</b> Sand req. for 1 M3 concrete (KG)</label>
+        <input id = "top-sand-req-800" class="right-info" name="top-5" value="801" oninput="functionChange800()"></input>
+        <br>
+        <label id="label-right" for="top-6"><b>Cement:</b> Cement req. for 1 M3 concrete (KG)</label>
+        <input id = "top-cem-req-400" class="right-info" name="top-6" value="380" oninput="functionChange400()"></input>
+        <br>
+        <label id="label-right" for="top-7"><b>Water:</b> Water req. for 1 M3 concrete (KG)</label>
+        <input id = "top-wat-req-152" class="right-info" name="top-7" value="150" oninput="functionChange152()"></input>
+        <br>
+        <label id="label-right" for="top-8"><b>Water:</b> Water/Admixture ratio (%)</label>
+        <input id = "top-adm-wt-ratio-0.7" class="right-info" name="top-8" value="0.70" oninput="functionChange7()"></input>
+        <br>
+        <label id="label-right" for="top-9"><b>Conversion:</b> CFT to M3 conversion factor</label>
+        <input id = "top-cft-m3-conv-35.315" class="right-info" name="top-9" value="35.315" oninput="functionChange35()"></input>
+        <br>
+    
+        <button id="button-default-top-right" onclick="functionDefaultTop()">Set Default</button>
+
+        <input id="error-inp-default" readonly></input>
+
+    </div>
+    </div>
+</td>
+<!------------------------------------- CALCULATOR START-------------------------------------------------->
+<td id="container-top-rightmost">
+
+<table id="container-bypass" class="border-none">
+    <h4 id="h4-header">Production volume in CFT (x100k)</h4>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-7.0" value="7.00" class="calc-bypass" onclick="click0700()">7.00</button></td>
+        <td class="border-none"><button id="b-7.5" value="7.50" class="calc-bypass" onclick="click0750()">7.50</button></td>
+        <td class="border-none"><button id="b-8.0" value="8.00" class="calc-bypass" onclick="click0800()">8.00</button></td>
+        <td class="border-none"><button id="b-8.5" value="8.50" class="calc-bypass" onclick="click0850()">8.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-9.0" value="9.00" class="calc-bypass" onclick="click0900()">9.00</button></td>
+        <td class="border-none"><button id="b-9.5" value="9.50" class="calc-bypass" onclick="click0950()">9.50</button></td>
+        <td class="border-none"><button id="b-10.0" value="10.00" class="calc-bypass" onclick="click1000()">10.00</button></td>
+        <td class="border-none"><button id="b-10.5" value="10.50" class="calc-bypass" onclick="click1050()">10.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-11.0" value="11.00" class="calc-bypass" onclick="click1100()">11.00</button></td>
+        <td class="border-none"><button id="b-11.5" value="11.50" class="calc-bypass" onclick="click1150()">11.50</button></td>
+        <td class="border-none"><button id="b-12.0" value="12.00" class="calc-bypass" onclick="click1200()">12.00</button></td>
+        <td class="border-none"><button id="b-12.5" value="12.50" class="calc-bypass" onclick="click1250()">12.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-13.0" value="13.00" class="calc-bypass" onclick="click1300()">13.00</button></td>
+        <td class="border-none"><button id="b-13.5" value="13.50" class="calc-bypass" onclick="click1350()">13.50</button></td>
+        <td class="border-none"><button id="b-14.0" value="14.00" class="calc-bypass" onclick="click1400()">14.00</button></td>
+        <td class="border-none"><button id="b-14.5" value="14.50" class="calc-bypass" onclick="click1450()">14.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-15.0" value="15.00" class="calc-bypass" onclick="click1500()">15.00</button></td>
+        <td class="border-none"><button id="b-15.5" value="15.50" class="calc-bypass" onclick="click1550()">15.50</button></td>
+        <td class="border-none"><button id="b-16.0" value="16.00" class="calc-bypass" onclick="click1600()">16.00</button></td>
+        <td class="border-none"><button id="b-16.5" value="16.50" class="calc-bypass" onclick="click1650()">16.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-17.0" value="17.00" class="calc-bypass" onclick="click1700()">17.00</button></td>
+        <td class="border-none"><button id="b-17.5" value="17.50" class="calc-bypass" onclick="click1750()">17.50</button></td>
+        <td class="border-none"><button id="b-18.0" value="18.00" class="calc-bypass" onclick="click1800()">18.00</button></td>
+        <td class="border-none"><button id="b-18.5" value="18.50" class="calc-bypass" onclick="click1850()">18.50</button></td>
+    </tr>
+    <tr class="border-none">
+        <td class="border-none"><button id="b-19.0" value="19.00" class="calc-bypass" onclick="click1900()">19.00</button></td>
+        <td class="border-none"><button id="b-19.5" value="19.50" class="calc-bypass" onclick="click1950()">19.50</button></td>
+        <td class="border-none"><button id="b-20.0" value="20.00" class="calc-bypass" onclick="click2000()">20.00</button></td>
+        <td class="border-none"><button id="b-20.5" value="20.50" class="calc-bypass" onclick="click2050()">20.50</button></td>
+    </tr>
+    
+
+</table>
+<div id="id-bypass">
+    <input id="bypass" value="1">
+</div>
+</td>
+
+<!------------------------------------- CALCULATOR END-------------------------------------------------->
+</tr>
+</table>
+<!---------------- TOP - END --------------------->
+
+<!--<button id="b-7.0" value="7.00" onclick="click0700()">7.00</button>
+<button id="b-7.5" value="7.50" onclick="click0750()">7.50</button>
+<button id="b-8.0" value="8.00" onclick="click0800()">8.00</button>
+<button id="b-8.5" value="8.50" onclick="click0850()">8.50</button>
+<button id="b-9.0" value="9.00" onclick="click0900()">9.00</button>
+<button id="b-9.5" value="9.50" onclick="click0950()">9.50</button>
+<button id="b-10.0" value="10.00" onclick="click1000()">10.00</button>
+<button id="b-10.5" value="10.50" onclick="click1050()">10.50</button>
+<button id="b-11.0" value="11.00" onclick="click1100()">11.00</button>
+<button id="b-11.5" value="11.50" onclick="click1150()">11.50</button>
+<button id="b-12.0" value="12.00" onclick="click1200()">12.00</button>
+<button id="b-12.5" value="12.50" onclick="click1250()">12.50</button>
+<button id="b-13.0" value="13.00" onclick="click1300()">13.00</button>
+<button id="b-13.5" value="13.50" onclick="click1350()">13.50</button>
+<button id="b-14.0" value="14.00" onclick="click1400()">14.00</button>
+<button id="b-14.5" value="14.50" onclick="click1450()">14.50</button>
+<button id="b-15.0" value="15.00" onclick="click1500()">15.00</button>
+<button id="b-15.5" value="15.50" onclick="click1550()">15.50</button>
+<button id="b-16.0" value="16.00" onclick="click1600()">16.00</button>
+<button id="b-16.5" value="16.50" onclick="click1650()">16.50</button>
+<button id="b-17.0" value="17.00" onclick="click1700()">17.00</button>
+<button id="b-17.5" value="17.50" onclick="click1750()">17.50</button>
+<button id="b-18.0" value="18.00" onclick="click1800()">18.00</button>
+<button id="b-18.5" value="18.50" onclick="click1850()">18.50</button>
+<button id="b-19.0" value="19.00" onclick="click1900()">19.00</button>
+<button id="b-19.5" value="19.50" onclick="click1950()">19.50</button>
+<button id="b-20.0" value="20.00" onclick="click2000()">20.00</button>-->
+
+
+<!----------------- REVERSE - START -------------->
+<div id="reverse-top">
+
+    <h3 class="header header-forecast">F O R E C A S T</h3>
+<table id="tab-forecast">
+    <tr id="tab-forecast">
+    <td id="tab-forecast">
+    <div class="aside">
+    <label id="" class="forcast-label" for="main-field-input">Material name & unit</label>
+    <select id="reverse-select" name="main-field-input">
+        <option>--- Select ---</option>
+        <option>Stone - MT</option>
+        <option>Stone - CFT</option>
+        <option>Sand - CFT</option>
+        <option>Cement - MT</option>
+        <option>Admix - MT</option>
+        <option>Water - MT</option>
+    </select>
+
+    <input id="rev-qty" class="number-separator" oninput="functionChangeForecast()">
+    <br>
+
+    <label id="" class="forcast-label" for="rev-res-cft">RMC Volume in CFT</label>
+    <input id="reverse-result-cft" class="" name="rev-res-cft" readonly>
+    <br>
+
+    <label id="" class="forcast-label" for="rev-res-m3">RMC Volume in M3</label>
+    <input id="reverse-result-m3" class="" name="rev-res-m3" readonly>
+    <br>
+
+    <!-- <button id="button-stone" class="button button-last" onclick="functionReverse()">Calculate</button> -->
+    <button id="button-reset" class="button button-last" onclick="myReset()">Reset</button>
+    </div>
+    </td>
+    
+
+    <td id="tab-forecast">
+    <div  class="aside aside-specific">
+    <input id="multiple" readonly><br>
+    <label class="forecast-right" for="mon-prd-name">Monthly RMC Prod. in CFT</label>
+    <input id="mon-prd" class="" name="mon-prd-name" placeholder="---Insert---" oninput="forecastCalcAuto()" onclick="clickPass_bot()">
+    <!--<datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>-->
+
+    <br>
+    <label class="forecast-right" for="mon-con-name">Month to go</label>
+    <input id="mon-con" class="" name="mon-con-name" readonly>
+    <br>
+
+    <!--<button id="button-forcast" class="button button-final" onclick="functionForecast()">Forecast</button><br>-->
+    </div>
+    </td>
+
+    <td id="border-less">
+        
+        <table id="table-pic">
+            <tr>
+                <td id="td-pic-mt">
+                    <img id="mt-pic" src="mt-pic.jpg"><br>
+                    
+                    <input id="mt-calc" class="mt-calc" readonly>
+                    <input id="mt-trip" class="mt-trip" readonly> 
+                </td>
+                <td id="td-pic-cp">
+                    <img id="cp-pic" src="cp-pic.jpg"><br>
+                    <input id="cp-calc" class="cp-calc" readonly>
+                    <input id="cp-trip" class="cp-trip" readonly>
+
+                </td>
+            </tr>
+
+        </table>
+
+
+
+    </td>
+
+    </tr>
+    
+</table>
+</div>
+<!----------------- REVERSE - END ---------------->
+
+
+<!----------------- RADIO BUTTON - START --------->
+<div id="radio-div">
+    <label id="radio">Material wise details -</label>
+
+
+    <input type="radio" id="rad-stone" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="">Stone</label>
+
+
+    <input type="radio" id="rad-sand" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="rad-sand">Sand</label>
+
+    <input type="radio" id="rad-cement" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="rad-cement">Cement</label>
+
+    <input type="radio" id="rad-admix" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="rad-admix">Admixture</label>
+
+    <input type="radio" id="rad-water" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="rad-water">Water</label>
+
+    <input type="radio" id="rad-none" name="rad-common" value="in" onclick="functionRadio()">
+    <label id="rad-none">None</label>
+
+<br><br>
+</div>
+<!----------------- RADIO BUTTON - END ----------->
+    
+
+<!---------------- STONE - START ------------------>
+<div id="container-stone">
+
+    <h3>S T O N E</h3>
+
+        <label id="label" for="sto-1">1 MT Stone Volume (CFT)</label>
+        <input id="fix-id1" class="common-input block" name="sto-1" value="23" oninput="functionStone()"></input>
+        <br>
+            
+        <label id="label" for="sto-2">1 CFT Stone Weight (KG)</label>
+        <input id="fix-id2" class="common-input block" name="sto-2" value="44" oninput="functionStone()"></input>
+        <br>
+
+        <label id="label" for="sto-3">1 M3 Concrete Need Stone (KG)</label>
+        <input id="fix-id3" class="common-input block" name="sto-3" value="1055" oninput="functionStone()"></input>
+        <br>
+
+        <label id="label" for="sto-4">CFT to M3 Conversion Factor</label>
+        <input id="fix-id4" class="common-input block" name="sto-4" value="35.315" oninput="functionStone()"></input>
+        <button id="button-default-top" onclick="resetStone()">Default</button>
+        <br><br>
+
+
+        
+        <label id="label" for="sto-5">3/4 Inc Stone Ratio (%)</label>        
+        <select id="select-34ratio" class="common-input block" onchange="onChangeDropDown()" >
+        <option>0</option><option>10</option><option>20</option><option>30</option><option>40</option><option>50</option>
+        <option>60</option><option>70</option><option selected>80</option><option>90</option><option>100</option>
+        </select>
+        <br>
+
+
+        <label id="label" for="sto-6">1/2 Inc Stone Ratio (%)</label>
+        <select id="select-12ratio" class="common-input block" onchange="onChangeDropDown()">
+        <option>0</option><option>10</option><option selected>20</option><option>30</option><option>40</option><option>50</option>
+        <option>60</option><option>70</option><option>80</option><option>90</option><option>100</option>
+        </select>
+    
+        <button id="button-default" onclick="onFeed()">Default Ratio</button>
+
+        <h4 id="warning-message">Summetion should equals 100.</h4>
+        <br>
+
+        <label id="label" for="sto-7">Concrete in CFT</label>
+        <!--<input id="con-cft-stone" class="common-input" name="sto-7"></input>-->
+        <input id="con-cft-stone" class="common-input" name="mon-prd-name" list="mon-prd-opt" oninput="functionStone()">
+    <datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>
+
+        <input id="qty-in-det-sto" name="sto-14"></input>
+        <br>
+
+        <label id="label" for="sto-8">Concrete in M3</label>
+        <input id="con-m3-stone" class="common-input block" name="sto-8" readonly></input>
+        <br>
+
+
+
+        <label id="label" for="sto-9">Required Stone in MT</label>
+        <input id="st-mt" class="common-input block" name="sto-9"  readonly></input>
+        <br>
+
+        <label id="label" for="name-10">Required Stone in KG</label>
+        <input id="st-kg" class="common-input block" name="sto-10"  readonly></input>
+        <br>
+
+        <label id="label" for="sto-11">Required Stone in CFT</label>
+        <input id="st-cft" class="common-input block" name="sto-11"  readonly></input>
+        <br><br><br>
+
+        <label id="label" for="sto-12">3/4 Stone Required in MT</label>
+        <input id="34-res" class="common-input block" name="sto-12"  readonly></input>
+        <br>
+
+        <label id="label" for="sto-13">1/2 Stone Required in MT</label>
+        <input id="12-res" class="common-input block" name="sto-13"  readonly></input>
+        <br>
+
+
+        <br><br>
+        <!--<button id="button-stone" class="button" onclick="functionStone()">Result</button>-->
+        <button id="button-reset" class="button" onclick="myReset()">Reset</button>
+
+</div>
+<!---------------- STONE - END --------------------> 
+</td>
+
+
+<td>
+<!---------------- SAND - START ------------------->
+<div id="container-sand">
+
+    <h3>S A N D</h3>
+
+    <label id="label" for="name-01">1 M3 Concrete Require Sand (KG)</label>
+    <input id="fix-sand" class="common-input block" name="name-01" value="801" oninput="functionSand()"></input>
+    <br>
+    
+    <label id="label" for="name-02">1 CFT Sand Weight in KG</label>
+    <input id="fix-weight" class="common-input block" name="name-02" value="38" oninput="functionSand()"></input>
+    <br>
+
+    <label id="label" for="name-03">CFT to M3 Conversion Factor</label>
+    <input id="fix-conv" class="common-input block" name="name-03" value="35.315" oninput="functionSand()"></input>
+    <button id="button-default-top" onclick="resetSand()">Default</button>
+    <br>
+    
+    <label id="label" for="name-04">Concrete in CFT</label>
+    <!--<input id="con-cft-sand" class="common-input" name="name-04"></input>-->
+    <input id="con-cft-sand" class="common-input" name="mon-prd-name" list="mon-prd-opt" oninput="functionSand()">
+    <datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>
+
+    <input id="qty-in-det-sand"></input>
+    <br>
+
+    <label id="label" for="name-05">Concrete in M3</label>
+    <input id="con-m3-sand" class="common-input block" name="name-05"  readonly></input>
+    <br>
+
+    <label id="label" for="name-06">Required Sand in CFT</label>
+    <input id="result-cft-sand" class="common-input block" name="name-06"  readonly></input>
+    <br>
+    
+    <label id="label" for="name-07">Required Sand in MT</label>
+    <input id="result-mt-sand" class="common-input block" name="name-07"  readonly></input>
+    <br>
+
+    <br><br>
+    <!--<button id="button-sand" class="button" onclick="functionSand()">Result</button>-->
+    <button id="button-reset" class="button" onclick="myReset()">Reset</button>
+
+</div>
+<!---------------- SAND - END --------------------->
+</td>
+</tr>
+
+<tr>
+<td>
+<!---------------- ADMIX - START ------------------>
+<div id="container-admix">
+
+    <h3>A D M I X T U R E</h3>
+
+    <label id="label" for="defaulte-cement">Required Cement per M3 Concrete</label>
+    <input id="default-cement" class="common-input block" name="defaulte-cement" value="380" oninput="functionAdmix()"></input>
+    <br>
+    
+    <label id="label" for="defaulte-adm">Admixture Percentage</label>
+    <input id="default-adm" class="common-input block" name="defaulte-adm" value="0.70" oninput="functionAdmix()"></input>
+    <br>
+
+    <label id="label" for="defaulte-conv">CFT to M3 Conversion Factor</label>
+    <input id="default-conv" class="common-input block" name="defaulte-conv" value="35.315" oninput="functionAdmix()"></input>
+    <button id="button-default-top" onclick="resetAdmix()">Default</button>
+    <br>
+    
+    <label id="label" for="name-con-cft">Concrete in CFT</label>
+    <!--<input id="con-cft-adm" class="common-input" name="name-con-cft"></input>-->
+    <input id="con-cft-adm" class="common-input" name="mon-prd-name" list="mon-prd-opt" oninput="functionAdmix()">
+    <datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>
+
+    <input id="qty-in-det-admix"></input>
+    <br>
+
+    <label id="label" for="name-con-m3">Concrete in M3</label>
+    <input id="con-m3-adm" class="common-input block" name="name-con-m3" readonly></input>
+    <br>
+
+    <label id="label" for="name-result-admix-kg">Required Admixture in KG</label>
+    <input id="result-admix-kg" class="common-input block" name="name-result-admix-kg" readonly></input>
+    <br>
+    
+    <label id="label" for="name-result-admix">Required Admixture in MT</label>
+    <input id="result-admix-mt" class="common-input block" name="name-result-admix" readonly></input>
+    <br>
+    
+
+    <br><br>
+    <!--<button id="button-admix" class="button" onclick="functionAdmix()">Result</button>-->
+    <button id="button-reset" class="button" onclick="myReset()">Reset</button>
+
+</div>
+<!---------------- ADMIX - END -------------------->
+</td>
+</tr>
+
+<tr>
+<td>
+<!---------------- CEMENT - START ----------------->
+<div id="container-cement">
+
+    <h3>C E M E N T</h3>
+
+    <label id="label" for="default-cement_cement">Required Cement per M3 Concrete</label>
+    <input id="default-cement_cement" class="common-input block" name="default-cement_cement" value="380" oninput="functionCement()"></input>
+    <br>
+
+    <label id="label" for="conv-fact">CFT to M3 Conversion Factor</label>
+    <input id="conv-fact" class="common-input block" name="conv-fact" value="35.315" oninput="functionCement()"></input>
+    <button id="button-default-top" onclick="resetCement()">Default</button>
+    <br>
+
+    <label id="label" for="name-con-cft-cement">Concrete in CFT</label>
+    <!--<input id="con-cft-cement" class="common-input" name="name-con-cft-cement"></input>-->
+    <input id="con-cft-cement" class="common-input" name="mon-prd-name" list="mon-prd-opt" oninput="functionCement()">
+    <datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>
+
+    
+    <input id="qty-in-det-cem"></input>
+    <br>
+
+    <label id="label" for="name-con-m3-cement">Concrete in M3</label>
+    <input id="con-m3-cement" class="common-input block" name="name-con-m3-cement" readonly></input>
+    <br>
+
+    <label id="label" for="name-result-cement-kg">Required Cement in KG</label>
+    <input id="result-cement-kg" class="common-input block" name="name-result-cement-kg" readonly></input>
+    <br>
+    
+    <label id="label" for="name-result-cement">Required Cement in MT</label>
+    <input id="result-cement" class="common-input block" name="name-result-cement" readonly></input>
+    <br>
+
+    <br><br>
+    <!--<button id="button-cement" class="button" onclick="functionCement()">Result</button>-->
+    <button id="button-reset" class="button" onclick="myReset()">Reset</button>
+
+</div>
+<!---------------- CEMENT - END ------------------->
+</td>
+
+<td>
+<!---------------- WATER - START ------------------>
+<div id="container-water">
+
+    <h3>W A T E R</h3>
+    <label id="label" for="wat-1">Water/Cement Ratio</label>
+    <input id="wc-ratio" class="common-input block" name="wat-1" value="0.40" oninput="autoWater()"></input>
+    <br>
+
+    <label id="label" for="wat-2">1 M3 Concrete Require Cement in KG</label>
+    <input id="con-fix-cem" class="common-input block" name="wat-2" value="380" oninput="autoWater()" ></input>
+    <br>
+
+    <label id="label" for="wat-3">1 M3 Concrete Require Water in KG</label>
+    <input id="water-fix" class="common-input block" name="wat-3" value="150" oninput="autoWater()"></input>
+    
+    <br>
+
+    <label id="label" for="wat-4">CFT to M3 Conversion Factor</label>
+    <input id="con-fix-fac" class="common-input block" name="wat-4" value="35.315" oninput="autoWater()"></input>
+    
+    <button id="button-default-top" onclick="resetWater()">Default</button>
+    <br>
+
+    <label id="label" for="wat-5">Concrete in CFT</label>
+    <!--<input id="con-cft-wat" class="common-input" name="wat-5"></input>-->
+    <input id="con-cft-wat" class="common-input" name="mon-prd-name" list="mon-prd-opt" oninput="autoWater()">
+    <datalist id="mon-prd-opt">
+        <option value="7.00">7.00</option>
+        <option value="7.50">7.50</option>
+        <option value="8.00">8.00</option>
+        <option value="8.50">8.50</option>
+        <option value="9.00">9.00</option>
+        <option value="9.50">9.50</option>
+        <option value="10.00">10.00</option>
+        <option value="10.50">10.50</option>
+        <option value="11.00">11.00</option>
+        <option value="11.50">11.50</option>
+        <option value="12.00">12.00</option>
+        <option value="12.50">12.50</option>
+        <option value="13.00">13.00</option>
+        <option value="13.50">13.50</option>
+        <option value="14.00">14.00</option>
+        <option value="14.50">14.50</option>
+        <option value="15.00">15.00</option>
+        <option value="15.50">15.50</option>
+        <option value="16.00">16.00</option>
+        <option value="16.50">16.50</option>
+        <option value="17.00">17.00</option>
+        <option value="17.50">17.50</option>
+        <option value="18.00">18.00</option>
+        <option value="18.50">18.50</option>
+        <option value="19.00">19.00</option>
+        <option value="19.50">19.50</option>
+        <option value="20.00">20.00</option>
+    </datalist>
+    
+    <input id="qty-in-det-wat" name="wat-6"></input>
+
+    <br>
+    <label id="label" for="wat-7">Concrete in M3</label>
+    <input id="con-m3-wat" class="common-input block" name="wat-7" readonly></input>
+
+
+    <br>
+    <label id="label" for="wat-8">Required Water in KG</label>
+    <input id="req-w-kg" class="common-input block" name="wat-8" readonly></input>
+    
+    
+    <br>
+    <label id="label" for="wat-9">Required Water in MT</label>
+    <input id="req-w-mt" class="common-input block" name="wat-9" readonly></input>
+
+    <br><br>
+    <!--<button id="button-water" class="button" onclick="functionWater()">Result</button>-->
+    <button id="button-reset" class="button" onclick="myReset()">Reset</button>
+
+</div>
+<!---------------- WATER - END -------------------->
+</td>
+</tr>
+
+
+<!--</table>-->
+    
+<script src="index.js"></script>
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,783 @@
+/*---------- COMMON -----------*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    
+}
+
+#banner {
+    display: block;
+    height: 53px;
+    margin: 0px; 
+}
+
+#strength-in {
+    width: 70px;
+    background-color: transparent;
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    margin-left: 8px;
+}
+
+#label-strength {
+    margin-left: 0px;
+}
+
+
+
+
+#warning-message {
+
+    color: red;
+}
+/*-----------------------------*/
+
+
+/*---------- Label ------------*/
+#label {
+    display: inline-block ;
+    width: 280px;
+    margin: 5px;
+}
+
+/*--------- Input -------------*/
+.common-input {
+    width: 80px;
+    border: 1px solid rgb(165, 165, 165);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    
+    
+}
+
+#error-inp-default {
+    width: 360px;
+    margin-top: 16px;
+    padding: 3px;
+    color:rgb(70, 70, 70);
+    background-color:rgb(253, 237, 191);
+    border: none;
+    outline: none;
+    font-style: italic;
+
+}
+
+
+#rad-cem-pcc {
+    margin-left: 210px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+#rad-cem-opc {
+    margin-left: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.block {
+    background-color: transparent;
+    
+}
+
+#border-less {
+    border-style: hidden;
+}
+
+#table-pic {
+    
+    margin-left: 532px;
+    height: 100px;
+    /*background-color: aqua;*/
+    width: 200px;  
+
+}
+
+#table-main {
+    height: 310px;;
+}
+
+#td-pic-mt {
+    height: 50px;
+    width: 50px;
+    text-align: right;
+    vertical-align: middle;
+    border-style: hidden;
+}
+
+#td-pic-cp {
+    height: 50px;
+    width: 50px;
+    padding-left: 20px;
+    text-align: left;
+    vertical-align: middle;
+    border-style: hidden;
+}
+
+#mt-pic {
+    width: 90px;  
+}
+
+#cp-pic {
+    width: 90px;
+}
+
+.mt-calc {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: right;
+    width: 76px;
+    font-size: 13px;
+    margin-right: 13px;
+    margin-top: 4px;
+    color: green;
+    font-weight: 600;
+
+    /*background-color: aqua;*/  
+}
+
+.mt-trip {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 78px;
+    margin-right: 13px;
+    color: green;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: right;
+    
+
+    /*background-color: aqua;*/
+    
+}
+
+
+.cp-calc {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 60px;
+    text-align: left;
+    font-size: 13px;
+    margin-left: 15px;
+    margin-top: 4px;
+    color: rgb(227, 158, 21);
+    font-weight: 600;
+
+     /*background-color: aqua;*/
+}
+
+.cp-trip {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 78px;
+    margin-left: 15px;
+    color: rgb(227, 158, 21);
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+
+     /*background-color: aqua;*/
+
+}
+/*--------- Container Wise -------------*/
+
+#container-water {
+    background-color:rgb(212, 232, 255);
+    margin: 0px;
+    width: 5000px;
+    height: auto;
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgb(207, 207, 207) ;
+    
+}
+
+#qty-in-det-wat {
+    width: 100px;
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+    
+
+}
+
+#container-stone {
+    background-color:rgb(212, 232, 255);
+    margin: 0px;
+    width: 5000px;
+    height: auto;
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgb(207, 207, 207) ;
+    
+}
+
+#qty-in-det-sto {
+    
+    
+    width: 100px;
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+
+}
+
+#container-cement {
+    background-color:rgb(212, 232, 255);
+    margin: 0px;
+    width: 5000px;
+    height: auto;
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgb(207, 207, 207) ;
+
+
+}
+
+#qty-in-det-cem {
+    width: 100px;
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+}
+
+#container-admix {
+    background-color:rgb(212, 232, 255);
+    margin: 0px;
+    width: 5000px;
+    height: auto;
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgb(207, 207, 207) ;
+}
+
+#qty-in-det-admix {
+    width: 100px;
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+}
+
+#container-sand {
+    background-color:rgb(212, 232, 255);
+    margin: 0px;
+    width: 5000px;
+    height: auto;
+    padding: 10px;
+    box-shadow: 5px 5px 0px rgb(207, 207, 207) ;
+}
+
+#qty-in-det-sand {
+    width: 100px;
+    font-size: 12px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+}
+
+
+#percentage {
+    
+    font-size: 11px;
+    font-style: italic;
+    color: grey;
+    background-color: transparent;
+    border: none;
+}
+
+
+
+
+/*---------- Button -----------*/
+.button {
+    width: 125px;
+    margin: 0px;
+    margin-left:0px;
+    color: rgb(0, 0, 0);
+    border: 1px solid #0d9634;
+    font-size: 13px;
+    padding: 3px;
+}
+
+.button:hover {
+    box-shadow: 0 0 2px grey;
+    cursor: pointer;
+    background-color: #0d9634;
+    color: white;
+}
+
+
+
+#button-default {
+    background-color: transparent;
+    width: 100px;
+    border: none;
+    color:blue;
+    cursor: pointer;
+    
+}
+
+#button-default:hover {
+    background-color: transparent;
+    width: 100px;
+    border: none;
+    color:rgb(0, 0, 0);
+    cursor: pointer;
+    
+}
+
+table, tr, td, th {
+    border: 1px solid rgb(152, 151, 151);
+    border-collapse: collapse;
+    padding: 0px;
+    
+
+}
+
+
+
+
+td {
+    vertical-align: top;
+}
+
+#container-top-left {
+    
+    background-color: rgb(224, 237, 255);
+    width: 700px;
+    height: 320px;
+    
+}
+
+#container-top-right {
+
+    background-color: rgb(224, 237, 255);
+    width: 430px;
+    height: 320px;
+    
+}
+
+#container-top-rightmost {
+    background-color: rgb(224, 237, 255);
+    width: 1000px;
+    height: 200px;
+    
+    
+}
+
+
+#top-st-req-tot, #top-sand-cft, #top-cem-mt, #top-adm-mt, #top-wat-mt, #top-st-req-34, #top-st-req-12 {
+
+    width: 120px;
+    outline: none;
+
+}
+
+.common-ontop {
+    background: transparent;
+    border: none;
+    height: 80px;
+    
+    
+}
+
+#top-result {
+    width: 300px;
+    height: 80px;
+}
+
+
+.set1 {
+    font-size: 13px;
+    margin-top: 3px;
+    
+}
+
+.set2 {
+height: 80px;
+font-size: 13px;
+margin-top: 16px;
+}
+
+.set3 {
+    width: 120px;
+    height: 15px;
+    font-size: 11px;
+    
+}
+
+.new-up {
+    margin-top: 10px;
+}
+
+.new-h {
+    height: 20px;
+    vertical-align:middle;
+    
+}
+
+.new-adm-1 {
+    margin-top: 5px;
+    text-align: center;
+
+}
+
+.new-adm-2 {
+    margin-top: 1px;
+    text-align: center;
+}
+
+
+#reverse-top {
+    width: 5000px;
+    height: 185px;
+    background-color: rgb(212, 232, 255);
+    border-top: 1px solid rgb(223, 223, 223);
+}
+
+#radio-div {
+    width: 5000px;
+    height: 20px;
+    padding: 20px;
+    background-color: rgb(197, 227, 238);
+    border-top: 1px solid rgb(149, 149, 149);
+    font-size: 13px;
+    margin-top: 0px;
+    box-shadow: 0px 2px 4px rgb(148, 148, 148);
+    
+}
+
+.header {
+    margin: -1px;
+    margin-bottom: 10px;
+    
+    height: 1px;
+    padding: 12px;
+    width: 110px;
+    background-color:rgb(168, 229, 240);
+    
+
+}
+
+.aside {
+    margin-left: 20px;
+    
+}
+
+
+#button-top-default {
+    margin-left: 210px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#label-right {
+    display: inline-block;
+    width: 280px;
+}
+
+.right-info {
+    width: 42px;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    outline: none;
+    margin-top: 4px;
+}
+
+#label-top {
+    display: inline-block;
+    width: 170px;
+    margin-top: 10px;
+}
+
+#top-con-cft {
+    width: 60px;
+    background-color:rgb(196, 255, 255);
+    border: 0px;
+    border-bottom: 1px solid grey;
+    outline: none;
+
+}
+
+#top-con-m3 {
+    width: 60px;
+    background-color: transparent;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    outline: none;
+}
+
+#qty-in-det-top {
+    width: 150px;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+    font-size: 12px;
+    font-style: italic;
+    
+}
+
+#typ-ratio {
+    display: inline-block;
+    width: 180px;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+
+#opt-34, #opt-12 {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid grey;
+    margin-left: 7px;
+
+}
+
+#button-default-top {
+    margin-left: 25px;
+    background-color: transparent;
+    border: none;
+    color: blue;
+}
+
+
+
+
+#button-default-top:hover {
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+}
+
+#button-default-top-right {
+    background-color: transparent;
+    margin-left: 255px;
+    margin-top: 10px;
+    border: none;
+    color: blue;
+}
+
+#button-default-top-right:hover {
+    
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+}
+
+#top-st-req-tot, #top-st-req-34, #top-st-req-12 {
+    height: 20px;
+    text-align: center;
+
+}
+
+#top-sand-cft, #top-cem-mt, #top-adm-mt, #top-wat-mt {
+    height: 20px;
+    text-align:center;
+}
+
+.top-marg {
+    margin-top: 5px;
+}
+
+.forcast-label {
+    display: inline-block;
+    width: 130px;
+}
+
+#reverse-select {
+    background-color: transparent;
+    width: 110px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;;
+    
+}
+
+#rev-qty {
+    background-color: transparent;
+    width: 70px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#reverse-result-cft, #reverse-result-m3 {
+    background-color: transparent;
+    margin-top: 10px;
+    width: 120px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+#tab-forecast {
+    border: none;
+}
+
+.button-last {
+    margin-top: 20px;
+}
+
+.forecast-right {
+    display: inline-block;
+    width: 160px;
+}
+
+.header-forecast {
+    margin-bottom: 20px;
+}
+
+#mon-prd {
+    background-color: rgb(196, 255, 255);
+    margin-top: 10px;
+    width: 60px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+
+#mon-con {
+    background-color: transparent;
+    margin-top: 10px;
+    width: 60px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid grey;
+}
+
+.button-final {
+    margin-top: 15px;
+}
+
+#table-border {
+    border-right-color: rgb(222, 237, 255);
+}
+
+.table-fat {
+   background-color: rgb(210, 220, 255);
+   padding: 2px;
+}
+
+#error-inp {
+    font-size: 12px;
+    color: red;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    margin-left: 111px;
+}
+
+h3 {
+
+    color: rgb(81, 0, 255);
+    
+}
+
+.aside-specific {
+    margin-left: 37px;
+    background-color: rgb(255, 244, 209);
+    padding: 20px;
+    border: 2px dotted grey;
+}
+
+#multiple {
+    
+        width: 150px;
+        background-color: transparent;
+        border: 0px;
+        outline: none;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 0px;
+        color:rgb(0, 0, 0);
+}
+
+#container-bypass {
+    margin-left: 50px;
+    
+    
+}
+
+#h4-header {
+    margin-left: 38px;
+    font-size: 13px;
+}
+
+
+
+
+#id-bypass {
+    display: none;
+}
+
+.calc-bypass {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(196, 255, 255);
+    border: 1px solid rgb(159, 159, 159);
+    align-content: center;
+    border-radius: 20%;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0px 3px 0px 0.6px rgb(216, 216, 216);
+    margin: 0px;
+    
+    
+}
+
+.calc-bypass:hover {
+    background-color: bisque;
+    
+}
+
+.calc-bypass:active {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(251, 203, 30);
+    border: none;
+    align-content: center;
+    font-size: 12.5px;
+    cursor: pointer;
+    
+}
+
+.calc-bypass:focus {
+    width: 50px;
+    height: 30px;
+    background-color: rgb(251, 203, 30);
+    border: none;
+    align-content: center;
+    font-size: 12.5px;
+    cursor: pointer;
+}
+
+.border-none {
+    border: none;
+}
+
+#psi-mpa {
+    width: 70px;
+    font-size: 12px;
+    font-style: italic;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+#rad-stone, #rad-sand, #rad-cement, #rad-admix, #rad-water, #rad-none {
+    cursor: pointer;
+}
+
